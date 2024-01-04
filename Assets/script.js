@@ -58,6 +58,8 @@ var upperCaseCharacters = [
   "Z"
 ]
 
+// Defines the possible parameters for the password generation using prompt and alert functions to define the lenght and mix of characters to be included in the password.
+
 function getPasswordOptions () {
   var length = parseInt(prompt("How many characters would you like your password to contain?"), 10);
   
@@ -90,6 +92,8 @@ function getPasswordOptions () {
     "Click OK to confirm including upper cased characters"
   )
 
+//  Ensures that at least one of the four options of characters are chosen so that a password can be generated
+
   if(hasSpecialCharacters === false &&
     hasNumericCharacters === false &&
     hasUpperCaseCharacters === false &&
@@ -97,6 +101,8 @@ function getPasswordOptions () {
       alert("Must select at least one character type");
       return null
     }
+
+// Creates an object which stores the parameters for the password determined above (length and characters)
 
     passwordOptions = {
       length: length,
@@ -110,10 +116,12 @@ function getPasswordOptions () {
 
 }
 
+// The below function generates a random 
+
 function getRandom(arr) {
-  var randomIndex = Math.floor(Math.random()* arr.length);
-  var randomElement = arr(randomIndex);
-  return randElement;
+  var randomIndex = Math.floor(Math.random() * arr.length);
+  var randomElement = arr[randomIndex];
+  return randomElement;
 }
 
 // Function to generate password
@@ -125,37 +133,46 @@ function generatePassword () {
 
   var guaranteedCharacters = [];
 
-  if(options.hasSpecialCharacters) {
-    possibleCharacters = possibleCharacters.concat(specialCharacters)
+  // The below conditionals check whether the user selected any of the four options from the above function (whether to include each type of character), then for each of the options, it will combine (ie concat) the the respective arrays 
+
+  if (options.hasSpecialCharacters) {
+    possibleCharacters = possibleCharacters.concat(specialCharacters);
     guaranteedCharacters.push(getRandom(specialCharacters));
   }
 
-  if(options.hasNumericCharacters) {
-    possibleCharacters = possibleCharacters.concat(numericCharacters)
+  if (options.hasNumericCharacters) {
+    possibleCharacters = possibleCharacters.concat(numericCharacters);
     guaranteedCharacters.push(getRandom(numericCharacters));
   }
 
-  if(options.lowerCaseCharacters) {
-    possibleCharacters = possibleCharacters.concat(lowerCaseCharacters)
+  if (options.hasLowerCaseCharacters) {
+    possibleCharacters = possibleCharacters.concat(lowerCaseCharacters);
     guaranteedCharacters.push(getRandom(lowerCaseCharacters));
   }
 
-  if(options.upperCaseCharacters) {
-    possibleCharacters = possibleCharacters.concat(upperCaseCharacters)
+  if (options.hasUpperCaseCharacters) {
+    possibleCharacters = possibleCharacters.concat(upperCaseCharacters);
     guaranteedCharacters.push(getRandom(upperCaseCharacters));
   }
 
-  for(var index =0; index < options.length; index++){
-    var possibleCharacters = getRandom(possibleCharacters);
+  // For loop which uses the length from the "length" key in the password options object, adding by one each time
+  // The function of the loop then sets a new variable that pulls a random element from the "possibleCharacters" array 
+  // The function then adds the random characters to the results array defined above bet not yet filled
 
-    results.push(possibleCharacters);
+  for (var index = 0; index < options.length; index++) {
+    var randomCharacter = getRandom(possibleCharacters);
+    results.push(randomCharacter);
   }
 
-  for(var index =0; index < guaranteedCharacters.length; index++){
+  // For loop which runs the length of the guaranteedCharacters array, and takes the characters that are guaranteed to be part of the password and places them in the correct positions within the final 'results' array
+
+  for (var index = 0; index < guaranteedCharacters.length; index++) {
     results[index] = guaranteedCharacters[index];
   }
 
-  return results.join("")
+//  Calls the function to return all elements of the final 'results' array and creates a string from it, which is returned as the password
+
+  return results.join("");
 }
 
 // Assignment code here
@@ -172,3 +189,4 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
