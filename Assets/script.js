@@ -1,8 +1,68 @@
-// Assignment code here
-
-
 // Get references to the #generate element
+// Array of special characters
+let specialCharacters = [
+  '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
+  '-', '_', '+', '=', '[', ']', '{', '}', '|', '\\',
+  ';', ':', '\'', '"', ',', '.', '<', '>', '/', '?',
+  '`', '~'
+]
+
+// Array of all numbers
+
+let numericCharacters = [
+  "0",
+  "1",
+  "2",
+  "3",
+  "4",
+  "5",
+  "6",
+  "7",
+  "8",
+  "9"
+]
+
+// Array of lower case characters
+let lowerCaseCharacters = [
+  'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+  'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+]
+
+// Array of Upper Case Characters
+let upperCaseCharacters = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z"
+]
+
+
+// Assignment code here
 var generateBtn = document.querySelector("#generate");
+
+// Function to generate password
 
 // Write password to the #password input
 function writePassword() {
