@@ -74,6 +74,40 @@ function getPasswordOptions () {
     alert("Password length must be less than 128 characters")
   }
   
+  var hasSpecialCharacters = confirm(
+    "Click OK to confirm including special characters"
+  )
+
+  var hasNumericCharacters = confirm(
+    "Click OK to confirm including numbers"
+  )
+
+  var hasLowerCaseCharacters = confirm(
+    "Click OK to confirm including lower cased characters"
+  )
+
+  var hasUpperCaseCharacters = confirm(
+    "Click OK to confirm including upper cased characters"
+  )
+
+  if(hasSpecialCharacters === false &&
+    hasNumericCharacters === false &&
+    hasUpperCaseCharacters === false &&
+    hasLowerCaseCharacters === false) {
+      alert("Must select at least one character type");
+      return null
+    }
+
+    passwordOptions = {
+      length: length,
+      hasSpecialCharacters: hasSpecialCharacters,
+      hasLowerCaseCharacters: hasLowerCaseCharacters,
+      hasNumericCharacters: hasNumericCharacters,
+      hasUpperCaseCharacters: hasUpperCaseCharacters
+    }
+
+    return passwordOptions;
+
 }
 
 function getRandom(arr) {
