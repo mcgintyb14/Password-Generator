@@ -1,15 +1,11 @@
 # Third-Challenge
 
 ## Table of Contents
-[Description]
-
-[Usage]
-
-[Installation]
-
-[Credits]
-
-[License]
+- [Description](#description)
+- [Usage](#usage)
+- [Installation](#installation)
+- [Credits](#credits)
+- [License](#license)
 
 ## Description
 This is a simple web page that is designed to generate a random password defined by paramters set by you. The page allows you to define the length of the random password as well as 
