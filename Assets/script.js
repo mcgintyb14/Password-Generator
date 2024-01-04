@@ -1,6 +1,6 @@
 // Get references to the #generate element
 // Array of special characters
-let specialCharacters = [
+var specialCharacters = [
   '!', '@', '#', '$', '%', '^', '&', '*', '(', ')',
   '-', '_', '+', '=', '[', ']', '{', '}', '|', '\\',
   ';', ':', '\'', '"', ',', '.', '<', '>', '/', '?',
@@ -9,7 +9,7 @@ let specialCharacters = [
 
 // Array of all numbers
 
-let numericCharacters = [
+var numericCharacters = [
   "0",
   "1",
   "2",
@@ -23,13 +23,13 @@ let numericCharacters = [
 ]
 
 // Array of lower case characters
-let lowerCaseCharacters = [
+var lowerCaseCharacters = [
   'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
   'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
 ]
 
 // Array of Upper Case Characters
-let upperCaseCharacters = [
+var upperCaseCharacters = [
   "A",
   "B",
   "C",
@@ -58,11 +58,36 @@ let upperCaseCharacters = [
   "Z"
 ]
 
+function getPasswordOptions () {
+  var length = parseInt(prompt("How many characters would you like your password to contain?"), 10);
+  
+  if(Number.isNaN(length)){
+    alert("Password length must be provided as a number")
+  }
+
+  if(length < 8) {
+    alert("Password must be at least 8 characters")
+    return null
+  }
+
+  if(length > 128){
+    alert("Password length must be less than 128 characters")
+  }
+  
+}
+
+function getRandom(arr) {
+
+  return randElement;
+}
+
+// Function to generate password
+function generatePassword () {
+  var options = getPasswordOptions();
+}
 
 // Assignment code here
 var generateBtn = document.querySelector("#generate");
-
-// Function to generate password
 
 // Write password to the #password input
 function writePassword() {
