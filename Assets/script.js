@@ -111,13 +111,51 @@ function getPasswordOptions () {
 }
 
 function getRandom(arr) {
-
+  var randomIndex = Math.floor(Math.random()* arr.length);
+  var randomElement = arr(randomIndex);
   return randElement;
 }
 
 // Function to generate password
 function generatePassword () {
   var options = getPasswordOptions();
+  var results = []
+
+  var possibleCharacters = []
+
+  var guaranteedCharacters = [];
+
+  if(options.hasSpecialCharacters) {
+    possibleCharacters = possibleCharacters.concat(specialCharacters)
+    guaranteedCharacters.push(getRandom(specialCharacters));
+  }
+
+  if(options.hasNumericCharacters) {
+    possibleCharacters = possibleCharacters.concat(numericCharacters)
+    guaranteedCharacters.push(getRandom(numericCharacters));
+  }
+
+  if(options.lowerCaseCharacters) {
+    possibleCharacters = possibleCharacters.concat(lowerCaseCharacters)
+    guaranteedCharacters.push(getRandom(lowerCaseCharacters));
+  }
+
+  if(options.upperCaseCharacters) {
+    possibleCharacters = possibleCharacters.concat(upperCaseCharacters)
+    guaranteedCharacters.push(getRandom(upperCaseCharacters));
+  }
+
+  for(var index =0; index < options.length; index++){
+    var possibleCharacters = getRandom(possibleCharacters);
+
+    results.push(possibleCharacters);
+  }
+
+  for(var index =0; index < guaranteedCharacters.length; index++){
+    results[index] = guaranteedCharacters[index];
+  }
+
+  return results.join("")
 }
 
 // Assignment code here
